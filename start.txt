@@ -1,0 +1,23 @@
+Create 2 new files, one for your HTML, and one for your Javascript. 
+Add jQuery to your HTML and link your custom JavaScript file. 
+
+For project ideas see: https://github.com/HackerYou/con-ed-js-fundamentals-student-notes/blob/master/Projects/javascript-jquery-project.md
+
+Requirements for this project are: 
+1. Using the jQuery library
+2. Interact with the HTML using events (such as a click)
+3. Take input from the user
+4. Update and edit HTML with jQuery
+5. Nice looking HTML + CSS to go along with the jQuery
+6. Have some sort of computed logic in it
+7. Separate files for html and js
+
+Once you choose your project idea, use pseudo code to get started.
+
+DUE: End of the day after the last fundamentals class (March 9, 11:59PM).
+
+TO SUBMIT YOUR ASSIGNMENT:
+Please name your project folder `your_name_project1` and then .zip it. 
+Email projects to jennyveens@gmail.com. Projects will be marked within 10 days from the due date, and in the order they are recieved. 
+
+Any problems or concerns, please feel free to reach out on slack (@jenny).
