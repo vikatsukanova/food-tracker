@@ -1,11 +1,13 @@
 $(function() {
 
-	const $foodListHtml = $('.ingredients-list');
-	const $recipesHtml = $('#recipes');
-	const $recepiesWrapper = $('#recipes-wrapper');
+	const recipesApp = {};
+
+	recipesApp.foodListHtml = $('.ingredients-list');
+	recipesApp.recipesHtml = $('#recipes');
+	recipesApp.recepiesWrapper = $('#recipes-wrapper');
 
 	// 1. Create a list of recepies
-	const recipes = [
+	recipesApp.recipes = [
 		{
 			name: 'Carbonara',
 			ingredients: ['bacon', 'spaghetti', 'egg', 'cheese'],
@@ -27,25 +29,25 @@ $(function() {
 	];
 
 	// 2. Create a list of food
-	const foodList = ['egg', 'spinach'];
+	recipesApp.foodList = ['egg', 'spinach'];
 
 	// 3. Show a list of ingredients to a user
-	const showFoodList = () => {
-		foodList.forEach(function(foodItem, index){
+	recipesApp.showFoodList = function() {
+		recipesApp.foodList.forEach(function(foodItem, index){
 			const listItem = `
 				<li class="list-item">${foodItem}</li>`;
 
-			$foodListHtml.append(listItem);
+			recipesApp.foodListHtml.append(listItem);
 		});
 	}
 
 	// 4. Write a function to filter out and return the recepies that have at least one ingridient that matches ingredients from the list
-	const getRecepies = () => {
+	recipesApp.getRecepies = function() {
 		let matchedRecipes = [];
 
-		foodList.forEach(function(foodItem, foodIndex){
+		recipesApp.foodList.forEach(function(foodItem, foodIndex){
 
-			recipes.forEach(function(recipe, recipeIndex){
+			recipesApp.recipes.forEach(function(recipe, recipeIndex){
 
 				const { name, ingredients, level, img} = recipe;
 
@@ -67,7 +69,7 @@ $(function() {
 	}
 
 	// 5. Prompt a user to add items to the ingredients list
-	const addNewFoodItem = () => {
+	recipesApp.addNewFoodItem = function() {
 		matchedRecipes = [];
 		const newFood = $('#item').val();
 
@@ -76,17 +78,17 @@ $(function() {
 
 			const formattedNewFood = `<li class="list-item">${newFood}</li>`
 
-			foodList.push(newFood);
-			$foodListHtml.append(formattedNewFood);
+			recipesApp.foodList.push(newFood);
+			recipesApp.foodListHtml.append(formattedNewFood);
 		}
 	}
 
 	// 6. Write a function to filter out and return the recepies that have at least two food items that match ingredients from the list
-	const showRecipes = () => {
+	recipesApp.showRecipes = function() {
 
-		const matchedRecipes = getRecepies();
+		const matchedRecipes = recipesApp.getRecepies();
 
-		$recepiesWrapper.empty();
+		recipesApp.recepiesWrapper.empty();
 		matchedRecipes.forEach(function(matchedRecipe, index){
 
 			const { name, img } = matchedRecipe;
@@ -98,20 +100,23 @@ $(function() {
 				</div>
 			`;
 
-			$recepiesWrapper.append(recipeItem);
+			recipesApp.recepiesWrapper.append(recipeItem);
 		});
 	}
 
-	showFoodList();
+	recipesApp.showFoodList();
 
-	$($recipesHtml).on('click', function() {
-		showRecipes();
-	});
+	recipesApp.init = function() {
+		$(recipesApp.recipesHtml).on('click', function() {
+			recipesApp.showRecipes();
+		});
 
-	$('form').on('submit', function(e) {
-		e.preventDefault();
+		$('form').on('submit', function(e) {
+			e.preventDefault();
 
-		addNewFoodItem();
-	});
+			recipesApp.addNewFoodItem();
+		});
+	}
 
+	recipesApp.init();
 });
