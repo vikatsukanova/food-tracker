@@ -4,9 +4,9 @@ $(function() {
 
 	recipesApp.foodListHtml = $('.ingredients-list');
 	recipesApp.recipesHtml = $('#recipes');
-	recipesApp.recepiesWrapper = $('#recipes-wrapper');
+	recipesApp.recipesWrapper = $('#recipes-wrapper');
 
-	// 1. Create a list of recepies
+	// 1. Create a list of recipes
 	recipesApp.recipes = [
 		{
 			name: 'Carbonara',
@@ -41,15 +41,15 @@ $(function() {
 		});
 	}
 
-	// 4. Write a function to filter out and return the recepies that have at least one ingridient that matches ingredients from the list
-	recipesApp.getRecepies = function() {
+	// 4. Write a function to filter out and return the recipes that have at least one ingridient that matches ingredients from the list
+	recipesApp.getrecipes = function() {
 		let matchedRecipes = [];
 
 		recipesApp.foodList.forEach(function(foodItem, foodIndex){
 
 			recipesApp.recipes.forEach(function(recipe, recipeIndex){
 
-				const { name, ingredients, level, img} = recipe;
+				const { name, ingredients, level, img } = recipe;
 
 				ingredients.forEach(function(ingredient, index){
 
@@ -83,12 +83,12 @@ $(function() {
 		}
 	}
 
-	// 6. Write a function to filter out and return the recepies that have at least two food items that match ingredients from the list
+	// 6. Write a function to filter out and return the recipes that have at least two food items that match ingredients from the list
 	recipesApp.showRecipes = function() {
 
-		const matchedRecipes = recipesApp.getRecepies();
+		const matchedRecipes = recipesApp.getrecipes();
 
-		recipesApp.recepiesWrapper.empty();
+		recipesApp.recipesWrapper.empty();
 		matchedRecipes.forEach(function(matchedRecipe, index){
 
 			const { name, img } = matchedRecipe;
@@ -100,7 +100,7 @@ $(function() {
 				</div>
 			`;
 
-			recipesApp.recepiesWrapper.append(recipeItem);
+			recipesApp.recipesWrapper.append(recipeItem);
 		});
 	}
 
