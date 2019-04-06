@@ -17,7 +17,7 @@ class App extends Component {
         </form>
         <FoodList />
         <button id="recipes">Show Recipes</button>
-        <div id="recipes-wrapper">
+        <div className="recipes-wrapper">
           <RecipeList />
         </div>
     </div>
