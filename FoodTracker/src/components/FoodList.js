@@ -1,11 +1,15 @@
 import React from 'react';
 
-function FoodList() {
+function FoodList(props) {
 	return (
 		<ul className="ingredients-list">
-			<li>Chicken</li>
-			<li>Egg</li>
-			<li>Banana</li>
+			{
+				props.ingredients.map((ingredient, index) => {
+					return (
+						<li key={ index }>{ ingredient }</li>
+					);
+				})
+			}
 		</ul>
 	)
 }

@@ -3,8 +3,8 @@ import axios from 'axios';
 
 class RecipeList extends Component {
 
-	constructor() {
-		super()
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			recipes: [],
@@ -25,13 +25,11 @@ class RecipeList extends Component {
 
 			const recipeData = await axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?', {
 				params: { 
-					i: 'salmon'
+					i: `${this.props.ingredients[Math.floor(Math.random()* this.props.ingredients.length)]}`
 				}
 			});
 
 			const { data } = recipeData;
-
-			console.log(data);
 
 			this.setState({
 				recipes: data.meals
